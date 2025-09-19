@@ -1,0 +1,28 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.0, pytest-8.4.2, pluggy-1.6.0
+rootdir: C:\GitHub\DIO\Machine Learning - BairesDev\projeto-09-testes-unitarios-com-langchain
+plugins: anyio-4.10.0, langsmith-0.4.28
+collected 5 items
+
+tests\test_soma.py ...FF                                                 [100%]
+
+================================== FAILURES ===================================
+__________________________ test_soma_falha_diferente __________________________
+
+    def test_soma_falha_diferente():
+>       assert soma(1, 2) != 3
+E       assert 3 != 3
+E        +  where 3 = soma(1, 2)
+
+tests\test_soma.py:19: AssertionError
+___________________________ test_soma_falha_excecao ___________________________
+
+    def test_soma_falha_excecao():
+>       with pytest.raises(TypeError):
+E       Failed: DID NOT RAISE <class 'TypeError'>
+
+tests\test_soma.py:22: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_soma.py::test_soma_falha_diferente - assert 3 != 3
+FAILED tests/test_soma.py::test_soma_falha_excecao - Failed: DID NOT RAISE <c...
+========================= 2 failed, 3 passed in 0.12s =========================

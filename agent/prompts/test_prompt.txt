@@ -1,0 +1,9 @@
+Gere testes unitários com pytest para o seguinte código Python:
+
+{code}
+
+Requisitos:
+- O arquivo deve começar com 'import pytest'
+- Os testes devem usar funções com o padrão 'def test_*'
+- Inclua pelo menos um caso de sucesso (assert verdadeiro) e um caso de falha (assert falso ou exceção esperada)
+- Os testes devem ser claros, diretos e executáveis
