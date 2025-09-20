@@ -10,12 +10,12 @@ def gerar_testes(caminho_arquivo):
     codigo = ler_codigo(caminho_arquivo)
     nome = extrair_nome_arquivo(caminho_arquivo)
 
-    print("\n🚀 Enviando código para o modelo:")
+    print("\n Enviando código para o modelo:")
     print(codigo)
 
     resposta = cadeia.invoke({"code": codigo})
 
-    print("\n📦 Resposta bruta do modelo:")
+    print("\n Resposta bruta do modelo:")
     print(repr(resposta))
 
     # Extrai o conteúdo da resposta
@@ -26,17 +26,17 @@ def gerar_testes(caminho_arquivo):
     else:
         bruto = str(resposta)
 
-    # 🔍 Extrai apenas o código Python entre os blocos ```python ... ```
+    # Extrai apenas o código Python entre os blocos ```python ... ```
     padrao = r"```python\n(.*?)```"
     match = re.search(padrao, bruto, re.DOTALL)
 
     if match:
         conteudo = match.group(1)
     else:
-        print("\n⚠️ Nenhum bloco de código Python encontrado. Salvando conteúdo bruto.")
+        print("\n Nenhum bloco de código Python encontrado. Salvando conteúdo bruto.")
         conteudo = bruto
 
-    # ✅ Adiciona import robusto para garantir que o teste funcione
+    # Adiciona import robusto para garantir que o teste funcione
     import_linha = (
         "import sys\n"
         "import os\n"
@@ -46,7 +46,7 @@ def gerar_testes(caminho_arquivo):
     )
     conteudo = import_linha + conteudo.strip()
 
-    print(f"\n📄 Conteúdo final para test_{nome}.py:\n")
+    print(f"\n Conteúdo final para test_{nome}.py:\n")
     print(conteudo)
 
     if "def test_" in conteudo:
@@ -54,22 +54,22 @@ def gerar_testes(caminho_arquivo):
         caminho_saida = f"tests/test_{nome}.py"
         with open(caminho_saida, "w", encoding="utf-8") as f:
             f.write(conteudo)
-        print(f"\n✅ Arquivo salvo em: {caminho_saida}")
+        print(f"\n Arquivo salvo em: {caminho_saida}")
     else:
-        print("\n⚠️ Nenhum teste foi detectado no conteúdo. Verifique o prompt ou a resposta.")
+        print("\n Nenhum teste foi detectado no conteúdo. Verifique o prompt ou a resposta.")
 
     return nome  # retorna o nome do arquivo para usar no relatório
 
 if __name__ == "__main__":
     nome_modulo = gerar_testes("examples/soma.py")
 
-    # 🕒 Gera timestamp para o nome do arquivo
+    # Gera timestamp para o nome do arquivo
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     nome_arquivo = f"resultado_testes_{nome_modulo}_{timestamp}.txt"
 
-    # 🧪 Executa os testes e salva a saída
-    print(f"\n📝 Executando pytest e salvando em {nome_arquivo}...")
+    # Executa os testes e salva a saída
+    print(f"\n Executando pytest e salvando em {nome_arquivo}...")
     with open(nome_arquivo, "w", encoding="utf-8") as f:
         subprocess.run(["pytest", "tests/"], stdout=f, stderr=subprocess.STDOUT)
 
-    print(f"\n✅ Resultado salvo em: {nome_arquivo}")
+    print(f"\n Resultado salvo em: {nome_arquivo}")
