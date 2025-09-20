@@ -5,7 +5,7 @@
 [![OpenAI](https://img.shields.io/badge/OpenAI-IA-red)]()   [![Pytest](https://img.shields.io/badge/Pytest-Testes-green)]()  
 
 > Nono projeto do **Bootcamp Machine Learning** da [DIO](https://www.dio.me/) em parceria com a **BairesDev**.  
-> Aplicação prática de um **agente de geração de testes unitários**, que recebe trechos de código Python e retorna automaticamente **arquivos de teste em Pytest**, utilizando **LangChain + GPT**.
+> Aplicação prática de um **agente de geração de testes unitários**, que recebe trechos de código Python e retorna automaticamente **arquivos de teste em Pytest**, utilizando **LangChain + ChatGPT**.
 
 ---
 
@@ -49,26 +49,26 @@ Pytest — Framework de testes utilizado para executar e validar os testes gerad
 
 ```text
 projeto-09-testes-unitarios-com-langchain
-├── agent                   # Código principal do agente LangChain
-│   ├── prompts             # Prompts utilizados para gerar os testes
+├── agent                       # Código principal do agente LangChain
+│   ├── prompts                 # Prompts utilizados para gerar os testes
 │   │   └── test_prompt.txt
 │   ├── __init__.py
-│   ├── chains.py           # Definições de chains LangChain
-│   └── utils.py            # Funções auxiliares
+│   ├── chains.py               # Definições de chains LangChain
+│   └── utils.py                # Funções auxiliares
 │
-├── examples                # Exemplos de código Python
+├── examples                    # Exemplos de código Python
 │   ├── __init__.py
-│   └── soma.py             # Exemplo simples para teste
+    │   └── soma.py             # Exemplo simples para teste
 │
-├── tests                   # Testes gerados ou escritos manualmente
+├── tests                       # Testes gerados ou escritos manualmente
 │   └── test_soma.py
 │
-├── .env                    # Variáveis de ambiente (API Key da OpenAI)
-├── LICENSE                 # Arquivo de licença MIT
-├── main.py                 # Arquivo principal do projeto
-├── requirements.txt        # Dependências do projeto
-├── resultado_testes_soma.txt  # Exemplo de saída dos testes executados
-└── README.md               # Este arquivo
+├── .env                        # Variáveis de ambiente (API Key da OpenAI)
+├── LICENSE                     # Arquivo de licença MIT
+├── main.py                     # Arquivo principal do projeto
+├── requirements.txt            # Dependências do projeto
+├── resultado_testes_soma.txt   # Exemplo de saída dos testes executados
+└── README.md                   # Este arquivo
 ```
 
 ---
